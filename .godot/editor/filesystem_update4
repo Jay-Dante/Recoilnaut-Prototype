@@ -1,0 +1,9 @@
+res://Scenes/Test_Scene.tscn
+res://Scenes/recoilnaut.tscn
+res://Scripts/recoilnaut.gd
+res://Scenes/pistol_bullet.tscn
+res://Scenes/pistol_bullet.gd
+res://Scenes/Bullets.gd
+res://Scenes/game.gd
+res://Scripts/game.gd
+res://Scripts/pistol_bullet.gd
