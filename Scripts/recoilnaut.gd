@@ -36,10 +36,10 @@ func _process(delta):
 	
 func _physics_process(delta):
 	
-	var input_vector := Vector2(0, Input.get_axis("forward", "backward"));
+	var input_vector := Vector2(0, 0);
 	
 	velocity += input_vector.rotated(rotation) * ACCELERATION;
-	#velocity = velocity.limit_length(MAX_SPEED)
+	# velocity = velocity.limit_length(MAX_SPEED)
 	
 	if input_vector.y == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, 3);
