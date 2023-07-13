@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvfjdbhov71c0"]
+[gd_scene load_steps=5 format=3 uid="uid://bvfjdbhov71c0"]
 
 [ext_resource type="PackedScene" uid="uid://ce5hcqoq1v8d" path="res://Scenes/recoilnaut.tscn" id="1_6v4gp"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_jdrf8"]
 [ext_resource type="PackedScene" uid="uid://cudgdf6e38n7y" path="res://Scenes/asteroid.tscn" id="3_a5edd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbrvk"]
+size = Vector2(1992, 1359)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jdrf8")
@@ -10,7 +13,49 @@ script = ExtResource("1_jdrf8")
 [node name="Recoilnaut" parent="." instance=ExtResource("1_6v4gp")]
 position = Vector2(640, 360)
 
+[node name="SpawnZone" type="Area2D" parent="Recoilnaut"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Recoilnaut/SpawnZone"]
+position = Vector2(10, 44.5)
+shape = SubResource("RectangleShape2D_lbrvk")
+
 [node name="Bullets" type="Node" parent="."]
 
-[node name="Asteroid" parent="." instance=ExtResource("3_a5edd")]
-position = Vector2(423, 300)
+[node name="Debris" type="Node" parent="."]
+
+[node name="Asteroids" type="Node" parent="Debris"]
+
+[node name="Asteroid" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(308, -81)
+
+[node name="Asteroid2" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(-182, 223)
+
+[node name="Asteroid3" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(-94, 580)
+
+[node name="Asteroid4" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(149, 977)
+
+[node name="Asteroid5" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(541, 982)
+
+[node name="Asteroid6" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(900, 946)
+
+[node name="Asteroid7" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(1278, 934)
+
+[node name="Asteroid8" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(1399, 572)
+
+[node name="Asteroid9" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(1378, 244)
+
+[node name="Asteroid10" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(1114, -89)
+
+[node name="Asteroid11" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
+position = Vector2(743, -103)
+
+[node name="Wreckage" type="Node" parent="Debris"]

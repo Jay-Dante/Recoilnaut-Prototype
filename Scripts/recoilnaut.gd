@@ -17,10 +17,22 @@ func _process(delta):
 	# rotate to cursor
 	var mouse_position := get_global_mouse_position();
 	var direction := mouse_position - global_position;
-	var screen_size = get_viewport_rect().size;
 	rotation = direction.angle() - deg_to_rad(-90);
 	
-	#screen wrapping
+func _physics_process(delta):
+	
+	var input_vector := Vector2(0, 0);
+	var screen_size = get_viewport_rect().size;
+	
+	velocity += input_vector.rotated(rotation) * ACCELERATION;
+	# velocity = velocity.limit_length(MAX_SPEED)
+	
+	if input_vector.y == 0:
+		velocity = velocity.move_toward(Vector2.ZERO, 3);
+	
+	move_and_slide();
+	
+		#screen wrapping
 	if global_position.y < 0:
 		global_position.y = screen_size.y;
 	elif global_position.y > screen_size.y:
@@ -33,19 +45,6 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("fire"):
 		fire_bullet();
-	
-func _physics_process(delta):
-	
-	var input_vector := Vector2(0, 0);
-	
-	velocity += input_vector.rotated(rotation) * ACCELERATION;
-	# velocity = velocity.limit_length(MAX_SPEED)
-	
-	if input_vector.y == 0:
-		velocity = velocity.move_toward(Vector2.ZERO, 3);
-	
-	move_and_slide();
-	
 # fire them bullets
 func fire_bullet():
 	var pb = pistol_bullet.instantiate();

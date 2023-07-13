@@ -1,7 +1,6 @@
 res://Scenes/Test_Scene.tscn
 res://Scenes/recoilnaut.tscn
 res://Scenes/pistol_bullet.tscn
-res://Asteroid.gd
 res://Scenes/asteroid.tscn
-res://Scripts/Asteroid.gd
 res://Scripts/game.gd
+res://Scripts/Asteroid.gd
