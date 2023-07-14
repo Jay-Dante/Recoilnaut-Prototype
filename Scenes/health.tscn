@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dktd4wxi75vim"]
+
+[node name="ProgressBar" type="ProgressBar"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 35.0
+offset_right = 70.0
+offset_bottom = 62.0
+grow_horizontal = 2
+value = 50.0
+rounded = true

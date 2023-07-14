@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dky3hkhshbj4v"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_0wlx4"]
+[ext_resource type="FontFile" uid="uid://dynf0qxshk31i" path="res://Assets/Type/VCR_OSD_MONO_1.001.ttf" id="2_uvrk8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3twsh"]
+font = ExtResource("2_uvrk8")
+font_size = 32
+font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mavs6"]
+font = ExtResource("2_uvrk8")
+font_color = Color(0.188235, 0.384314, 0.188235, 1)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0wlx4")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1036.0
+offset_top = 17.0
+offset_right = 1260.0
+offset_bottom = 63.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_3twsh")
+horizontal_alignment = 2
+
+[node name="Version" type="Label" parent="."]
+layout_mode = 0
+offset_left = 998.0
+offset_top = 775.0
+offset_right = 1270.0
+offset_bottom = 798.0
+text = "Recoilnaut Prototype ver. 0.1"
+label_settings = SubResource("LabelSettings_mavs6")

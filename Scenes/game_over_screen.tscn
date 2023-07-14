@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbeu6ls63kc50"]
+
+[ext_resource type="FontFile" uid="uid://dynf0qxshk31i" path="res://Assets/Type/VCR_OSD_MONO_1.001.ttf" id="1_85cqs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eoxtx"]
+font = ExtResource("1_85cqs")
+font_size = 64
+font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4et8"]
+font = ExtResource("1_85cqs")
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -134.0
+offset_right = 190.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RECOILNAUT"
+label_settings = SubResource("LabelSettings_eoxtx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="You Died" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 85.0
+offset_right = 242.0
+offset_bottom = 108.0
+text = "- YOU DIED -"
+label_settings = SubResource("LabelSettings_g4et8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 401.0
+offset_right = 748.0
+offset_bottom = 441.0
+theme_override_fonts/font = ExtResource("1_85cqs")
+theme_override_font_sizes/font_size = 18
+text = "TRY AGAIN"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 465.0
+offset_right = 748.0
+offset_bottom = 505.0
+theme_override_fonts/font = ExtResource("1_85cqs")
+theme_override_font_sizes/font_size = 18
+text = "QUIT TO MAIN MENU"

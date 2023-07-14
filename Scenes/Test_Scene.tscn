@@ -1,23 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvfjdbhov71c0"]
+[gd_scene load_steps=7 format=3 uid="uid://bvfjdbhov71c0"]
 
 [ext_resource type="PackedScene" uid="uid://ce5hcqoq1v8d" path="res://Scenes/recoilnaut.tscn" id="1_6v4gp"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_jdrf8"]
+[ext_resource type="PackedScene" uid="uid://dky3hkhshbj4v" path="res://Scenes/hud.tscn" id="2_cd1rt"]
 [ext_resource type="PackedScene" uid="uid://cudgdf6e38n7y" path="res://Scenes/asteroid.tscn" id="3_a5edd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbrvk"]
-size = Vector2(1992, 1359)
+[ext_resource type="PackedScene" uid="uid://bbeu6ls63kc50" path="res://Scenes/game_over_screen.tscn" id="4_22l8h"]
+[ext_resource type="PackedScene" uid="uid://dktd4wxi75vim" path="res://Scenes/health.tscn" id="4_xsfd6"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jdrf8")
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("2_cd1rt")]
+
+[node name="ProgressBar" parent="UI" instance=ExtResource("4_xsfd6")]
+
+[node name="GameOverScreen" parent="UI" instance=ExtResource("4_22l8h")]
+
 [node name="Recoilnaut" parent="." instance=ExtResource("1_6v4gp")]
 position = Vector2(640, 360)
-
-[node name="SpawnZone" type="Area2D" parent="Recoilnaut"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Recoilnaut/SpawnZone"]
-position = Vector2(10, 44.5)
-shape = SubResource("RectangleShape2D_lbrvk")
 
 [node name="Bullets" type="Node" parent="."]
 
@@ -59,3 +61,6 @@ position = Vector2(1114, -89)
 position = Vector2(743, -103)
 
 [node name="Wreckage" type="Node" parent="Debris"]
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(640, 400)

@@ -4,3 +4,8 @@ res://Scenes/pistol_bullet.tscn
 res://Scenes/asteroid.tscn
 res://Scripts/game.gd
 res://Scripts/Asteroid.gd
+res://Scenes/hud.tscn
+res://Scripts/hud.gd
+res://Scripts/recoilnaut.gd
+res://Scenes/health.tscn
+res://Scenes/game_over_screen.tscn

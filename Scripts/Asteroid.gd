@@ -1,6 +1,6 @@
 class_name Asteroid extends Area2D
 
-signal destroyed(pos,size);
+signal destroyed(pos, size, points);
 
 var move_vec := Vector2(0,-1);
 
@@ -11,6 +11,18 @@ var speed = 0;
 
 @onready var sprite = $Sprite2D;
 @onready var cshape = $CollisionShape2D;
+
+var points: int:
+	get:
+		match size:
+			BodySize.SMALL:
+				return 100;
+			BodySize.MEDIUM:
+				return 50;
+			BodySize.LARGE:
+				return 25;
+			_:
+				return 0;
 
 func _ready():
 	rotation = randf_range(0,2*PI);
@@ -39,6 +51,12 @@ func _physics_process(delta):
 	global_position += move_vec.rotated(rotation) * speed * delta;
 
 func destroy():
-	emit_signal("destroyed", global_position, size);
+	emit_signal("destroyed", global_position, size, points);
 	print("Destroy Signal Emitted");
 	queue_free();
+
+# 死ね
+func _on_body_entered(body):
+	if body is Recoilnaut:
+		var recoilnaut = body;
+		recoilnaut.死ね();

@@ -1,9 +1,16 @@
+Button
+Label
+Control
+ProgressBar
+TextureProgressBar
+TextureRect
+Node2D
+CanvasLayer
 CollisionShape2D
 Area2D
 Node
 Sprite2D
 CPUParticles2D
 AudioStreamPlayer2D
-Node2D
 VisibleOnScreenNotifier2D
 CharacterBody2D
