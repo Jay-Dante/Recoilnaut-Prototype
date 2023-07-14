@@ -1,8 +1,8 @@
+Camera2D
 Label
 Sprite2D
 RichTextLabel
 Button
-Camera2D
 GPUParticles2D
 CPUParticles2D
 Node2D

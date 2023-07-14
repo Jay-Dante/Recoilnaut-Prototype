@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvfjdbhov71c0"]
+[gd_scene load_steps=9 format=3 uid="uid://bvfjdbhov71c0"]
 
 [ext_resource type="PackedScene" uid="uid://ce5hcqoq1v8d" path="res://Scenes/recoilnaut.tscn" id="1_6v4gp"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_jdrf8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cudgdf6e38n7y" path="res://Scenes/asteroid.tscn" id="3_a5edd"]
 [ext_resource type="PackedScene" uid="uid://bbeu6ls63kc50" path="res://Scenes/game_over_screen.tscn" id="4_22l8h"]
 [ext_resource type="PackedScene" uid="uid://dktd4wxi75vim" path="res://Scenes/health.tscn" id="4_xsfd6"]
+[ext_resource type="Script" path="res://Scenes/StarfieldParallax.gd" id="7_hbmsb"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1pqoh"]
 emission_shape = 3
@@ -31,6 +32,22 @@ script = ExtResource("1_jdrf8")
 
 [node name="Recoilnaut" parent="." instance=ExtResource("1_6v4gp")]
 position = Vector2(640, 360)
+
+[node name="Camera2D2" type="Camera2D" parent="Recoilnaut"]
+position_smoothing_enabled = true
+
+[node name="StarfieldParallax" type="Node2D" parent="Recoilnaut/Camera2D2"]
+position = Vector2(-640, -360)
+script = ExtResource("7_hbmsb")
+
+[node name="Field0" type="GPUParticles2D" parent="Recoilnaut/Camera2D2/StarfieldParallax"]
+z_index = -100
+position = Vector2(640, 400)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_1pqoh")
+lifetime = 200.0
+preprocess = 280.0
+speed_scale = 64.0
 
 [node name="Bullets" type="Node" parent="."]
 
@@ -75,13 +92,3 @@ position = Vector2(743, -103)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(640, 400)
-
-[node name="StarfieldParallax" type="Node2D" parent="."]
-
-[node name="Field0" type="GPUParticles2D" parent="StarfieldParallax"]
-z_index = -100
-position = Vector2(640, 400)
-amount = 1000
-process_material = SubResource("ParticleProcessMaterial_1pqoh")
-lifetime = 140.0
-preprocess = 280.0
