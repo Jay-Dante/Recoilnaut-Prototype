@@ -9,3 +9,6 @@ res://Scripts/hud.gd
 res://Scripts/recoilnaut.gd
 res://Scenes/health.tscn
 res://Scenes/game_over_screen.tscn
+res://Scenes/game_over_screen.gd
+res://Scenes/main_menu.tscn
+res://Scenes/main_menu.gd

@@ -10,12 +10,13 @@ signal died;
 @export var RECOIL_FORCE := 250;
 
 @onready var weapon = $Weapon;
+@onready var sprite = $PlayerSprite;
+@onready var cshape = $CollisionShape2D;
 
 var pistol_bullet = preload("res://Scenes/pistol_bullet.tscn");
 var recoil_direction = Vector2.ZERO;
 var knockback_direction = Vector2.ZERO;
 var inputEnabled = true;
-
 # it's alive!
 var alive := true;
 
@@ -62,7 +63,7 @@ func fire_bullet():
 	apply_recoil_force();
 	$Weapon/Gunshot.play();
 	$Weapon/Bulletsmoke.emitting = true;
-	$Weapon/Bulletsmoke.restart()
+	$Weapon/Bulletsmoke.restart();
 	
 func apply_recoil_force():
 	recoil_direction = (get_global_mouse_position() - global_position).normalized() * -1
@@ -78,6 +79,10 @@ func 死ね():
 		alive = false;
 		emit_signal("died");
 		disableInput();
+		sprite.visible = false;
+		cshape.disabled = true;
+		$Status/DeathCrunch.play();
+		$Status/Deathicles.emitting = true;
 
 # revival
 func respawn(pos):

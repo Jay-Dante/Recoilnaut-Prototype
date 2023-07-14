@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbeu6ls63kc50"]
+[gd_scene load_steps=5 format=3 uid="uid://bbeu6ls63kc50"]
 
 [ext_resource type="FontFile" uid="uid://dynf0qxshk31i" path="res://Assets/Type/VCR_OSD_MONO_1.001.ttf" id="1_85cqs"]
+[ext_resource type="Script" path="res://Scenes/game_over_screen.gd" id="1_ocq5s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eoxtx"]
 font = ExtResource("1_85cqs")
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ocq5s")
 
 [node name="GameOver" type="Label" parent="."]
 layout_mode = 1
@@ -68,3 +70,6 @@ offset_bottom = 505.0
 theme_override_fonts/font = ExtResource("1_85cqs")
 theme_override_font_sizes/font_size = 18
 text = "QUIT TO MAIN MENU"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

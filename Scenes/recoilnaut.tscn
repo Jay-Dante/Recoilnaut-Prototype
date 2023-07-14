@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce5hcqoq1v8d"]
+[gd_scene load_steps=6 format=3 uid="uid://ce5hcqoq1v8d"]
 
 [ext_resource type="Script" path="res://Scripts/recoilnaut.gd" id="1_42pcl"]
 [ext_resource type="Texture2D" uid="uid://bbvxom10p8cj4" path="res://Assets/Art/Recoilnaut.png" id="1_d0h78"]
 [ext_resource type="AudioStream" uid="uid://tncohwkys6jl" path="res://Assets/Sound/PistolShot.wav" id="3_5fb0w"]
+[ext_resource type="AudioStream" uid="uid://b2ipwfhr887ay" path="res://Assets/Sound/deathboom.wav" id="4_tie3g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3evn"]
 radius = 12.0
@@ -14,7 +15,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_42pcl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = -1.5708
 scale = Vector2(3, 3)
@@ -43,4 +44,26 @@ initial_velocity_min = 50.0
 initial_velocity_max = 50.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
+color = Color(0.752941, 0.913725, 0.0627451, 1)
+
+[node name="Status" type="Node2D" parent="."]
+
+[node name="DeathCrunch" type="AudioStreamPlayer2D" parent="Status"]
+stream = ExtResource("4_tie3g")
+volume_db = -10.0
+
+[node name="Deathicles" type="CPUParticles2D" parent="Status"]
+emitting = false
+amount = 20
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 10.0
 color = Color(0.752941, 0.913725, 0.0627451, 1)

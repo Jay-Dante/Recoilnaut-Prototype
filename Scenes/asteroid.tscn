@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cudgdf6e38n7y"]
+[gd_scene load_steps=5 format=3 uid="uid://cudgdf6e38n7y"]
 
 [ext_resource type="Script" path="res://Scripts/Asteroid.gd" id="1_ta6s6"]
 [ext_resource type="Shape2D" uid="uid://bi1ipaa4fpaoq" path="res://Resources/asteroid_collision_large.tres" id="2_xiia0"]
+[ext_resource type="AudioStream" uid="uid://b2kpc43euov2" path="res://Assets/Sound/RockBreak.wav" id="3_ugd5w"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ihlkw"]
 
@@ -10,11 +11,31 @@ collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_ta6s6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Roid" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = SubResource("CompressedTexture2D_ihlkw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_xiia0")
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(3, 33)
+stream = ExtResource("3_ugd5w")
+
+[node name="Impacticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 10.0
+color = Color(0.188235, 0.384314, 0.188235, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

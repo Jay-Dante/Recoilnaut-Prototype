@@ -14,13 +14,13 @@ var score := 0:
 		score = value;
 		hud.score = score;
 
-var health = 5;
+var health = 1;
 ############################ NOTIFICATION FUNCTIONS ######################
 func _ready():
 	
 	game_over.visible = false;
 	score = 0;
-	health = 5;
+	health = 1;
 	player.connect("pb_shot", _on_player_pb_shot);
 	player.connect("died", _on_player_died);
 	
@@ -37,9 +37,12 @@ func _on_player_pb_shot(bullet):
 
 func _on_player_died():
 	health -= 1;
+	print(health);
 	print("Player died");
 	if health <= 0:
+		await get_tree().create_timer(1).timeout;
 		game_over.visible = true;
+		player.disableInput();
 #	else:
 #		await get_tree().create_timer(1).timeout;
 #		player.respawn(player_spawn.global_position);

@@ -9,7 +9,7 @@ enum BodySize{SMALL, MEDIUM, LARGE};
 
 var speed = 0;
 
-@onready var sprite = $Sprite2D;
+@onready var sprite = $Roid;
 @onready var cshape = $CollisionShape2D;
 
 var points: int:
@@ -52,7 +52,12 @@ func _physics_process(delta):
 
 func destroy():
 	emit_signal("destroyed", global_position, size, points);
-	print("Destroy Signal Emitted");
+	sprite.visible = false;
+	cshape.disabled = true;
+	$Impact.play();
+	$Impacticles.emitting = true;
+	#$Impacticles.restart();
+	await get_tree().create_timer(2).timeout;
 	queue_free();
 
 # 死ね

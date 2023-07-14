@@ -1,0 +1,263 @@
+[gd_scene load_steps=7 format=3 uid="uid://rg6geehig6om"]
+
+[ext_resource type="FontFile" uid="uid://dynf0qxshk31i" path="res://Assets/Type/VCR_OSD_MONO_1.001.ttf" id="1_5d01w"]
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_i2ina"]
+[ext_resource type="Texture2D" uid="uid://cuu5n4ldakfap" path="res://Assets/Art/Instructions.png" id="3_ok2tc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnouq"]
+font = ExtResource("1_5d01w")
+font_size = 100
+font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7tdju"]
+font = ExtResource("1_5d01w")
+font_color = Color(0.188235, 0.384314, 0.188235, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pyi5p"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 600, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.752941, 0.913725, 0.0627451, 1)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2ina")
+
+[node name="GameOver" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -370.5
+offset_top = 96.0
+offset_right = 370.5
+offset_bottom = 213.0
+grow_horizontal = 2
+text = "RECOILNAUT"
+label_settings = SubResource("LabelSettings_vnouq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StoryModeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = 316.5
+offset_right = -519.0
+offset_bottom = -428.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_colors/font_pressed_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 30
+text = "Story Mode"
+
+[node name="UnnecessaryMonologue" type="RichTextLabel" parent="StoryModeButton"]
+visible = false
+layout_mode = 0
+offset_left = -473.0
+offset_top = 1.0
+offset_right = -45.0
+offset_bottom = 419.0
+theme_override_colors/default_color = Color(0.752941, 0.913725, 0.0627451, 1)
+text = "This game is still a work in progress. In fact, I just might trash everything and start over at any moment. Perhaps even while you're playing. Oh what a volatile world.
+
+Anyway, thanks for trying the game! 
+
+Still here eh? Wanna know where I got the idea from? Let's just say I was watching a particularly well known, well received, space western anime. 
+
+In one scene, the main character is floating around, not in space necessarily, but under the same gravitational pretenses you could say. Our daring protagonist must cross over to the other side of his environment but is unable to generate the force needed to propel himself to do so, as he is suspended in zero gravity. He then cleverly pulls out his trusty sidearm and fires in the opposite direction to his target destination; generating the force needed to reach his goal.
+
+and thus, RECOILNAUT was born. In my head. For several months. As where most game ideas go to die, ironically. But not RECOILNAUT! You can play it! It's here! In front of you! Go play it! Click the ENDLESS MODE button! Play for no more than 5 minutes I imagine! But you played it! Technically, you're playing it right now! As you sit here and read it, it's a visual novel! With next to no visuals!
+
+Ok I must now take my leave as I further break and rebuild the game behind the scenes.
+
+If you liked the game, hated the game, or have any suggestions for the game, feel free to reach out to me. I'm the guy in the itch.io submission, it'll probably say I did the programming and other stuff. That is I.
+
+Until next time friends!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Heh I knew you'd keep scrolling for more. Fine then, as a reward, I'll share ye a joke:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+
+[node name="EndlessModeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = 404.5
+offset_right = -519.0
+offset_bottom = -340.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 30
+text = "Endless Mode"
+
+[node name="ControlsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = 492.5
+offset_right = -519.0
+offset_bottom = -252.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+
+[node name="Instructions" type="Sprite2D" parent="ControlsButton"]
+visible = false
+texture_filter = 1
+position = Vector2(499.75, 31.25)
+scale = Vector2(3.22266, 3.23828)
+texture = ExtResource("3_ok2tc")
+
+[node name="Aim" type="Label" parent="ControlsButton/Instructions"]
+offset_left = -48.897
+offset_top = -41.5296
+offset_right = 57.103
+offset_bottom = -15.5296
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 14
+text = "MOUSE TO AIM"
+
+[node name="Aim" type="Label" parent="ControlsButton/Instructions/Aim"]
+offset_left = -0.0533447
+offset_top = 60.4439
+offset_right = 105.947
+offset_bottom = 86.4439
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 14
+text = "CLICK 
+TO SHOOT"
+
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = 580.5
+offset_right = -519.0
+offset_bottom = -164.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 30
+text = "Credits"
+
+[node name="Credits" type="Label" parent="CreditsButton"]
+visible = false
+layout_mode = 0
+offset_left = -172.0
+offset_top = -353.0
+offset_right = 406.0
+offset_bottom = -291.0
+theme_override_colors/font_color = Color(0.188235, 0.384314, 0.188235, 1)
+text = "@Jay_Dante: Programming, Art, Design
+@T.K.: Music, Sound, Design"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = 676.5
+offset_right = -519.0
+offset_bottom = -68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.188235, 0.384314, 0.188235, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Version" type="Label" parent="."]
+offset_left = 998.0
+offset_top = 775.0
+offset_right = 1270.0
+offset_bottom = 798.0
+text = "Recoilnaut Prototype ver. 0.1"
+label_settings = SubResource("LabelSettings_7tdju")
+
+[node name="Field0" type="GPUParticles2D" parent="."]
+z_index = -100
+position = Vector2(1320, 400)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_pyi5p")
+lifetime = 140.0
+preprocess = 280.0
+
+[connection signal="pressed" from="StoryModeButton" to="." method="_on_story_mode_button_pressed"]
+[connection signal="pressed" from="EndlessModeButton" to="." method="_on_endless_mode_button_pressed"]
+[connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
