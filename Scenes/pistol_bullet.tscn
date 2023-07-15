@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cexb6ketcsgcm"]
+[gd_scene load_steps=5 format=3 uid="uid://cexb6ketcsgcm"]
 
 [ext_resource type="Script" path="res://Scripts/pistol_bullet.gd" id="1_l5gwf"]
 [ext_resource type="Texture2D" uid="uid://gvkvmlafkym7" path="res://Assets/Art/Pistol_Bullet.png" id="1_xbqgk"]
+[ext_resource type="AudioStream" uid="uid://uif5go7rf6m4" path="res://Assets/Sound/bullet_rico.wav" id="3_7g6u0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46bfd"]
 size = Vector2(4, 9)
@@ -34,6 +35,9 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 color = Color(0.752941, 0.913725, 0.0627451, 1)
+
+[node name="Bullet_Rico" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7g6u0")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

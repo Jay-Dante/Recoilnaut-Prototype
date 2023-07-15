@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvfjdbhov71c0"]
+[gd_scene load_steps=10 format=3 uid="uid://bvfjdbhov71c0"]
 
 [ext_resource type="PackedScene" uid="uid://ce5hcqoq1v8d" path="res://Scenes/recoilnaut.tscn" id="1_6v4gp"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_jdrf8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bbeu6ls63kc50" path="res://Scenes/game_over_screen.tscn" id="4_22l8h"]
 [ext_resource type="PackedScene" uid="uid://dktd4wxi75vim" path="res://Scenes/health.tscn" id="4_xsfd6"]
 [ext_resource type="Script" path="res://Scenes/StarfieldParallax.gd" id="7_hbmsb"]
+[ext_resource type="PackedScene" uid="uid://c0psba0a4hq2i" path="res://Scenes/debris.tscn" id="8_nqflh"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1pqoh"]
 emission_shape = 3
@@ -27,6 +28,7 @@ script = ExtResource("1_jdrf8")
 [node name="HUD" parent="UI" instance=ExtResource("2_cd1rt")]
 
 [node name="ProgressBar" parent="UI" instance=ExtResource("4_xsfd6")]
+visible = false
 
 [node name="GameOverScreen" parent="UI" instance=ExtResource("4_22l8h")]
 
@@ -87,6 +89,9 @@ position = Vector2(1114, -89)
 
 [node name="Asteroid11" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
 position = Vector2(743, -103)
+
+[node name="debris" parent="Debris/Asteroids" instance=ExtResource("8_nqflh")]
+position = Vector2(328, 376)
 
 [node name="Wreckage" type="Node" parent="Debris"]
 

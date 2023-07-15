@@ -72,5 +72,6 @@ func asteroid_drop(pos, size):
 	a.global_position = pos;
 	a.size = size;
 	a.connect("destroyed", _on_asteroid_destroyed);
-	asteroids.add_child(a);
+	# asteroids.add_child(a);
+	asteroids.call_deferred("add_child", a);
 

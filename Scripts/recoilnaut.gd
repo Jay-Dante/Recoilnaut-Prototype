@@ -81,7 +81,8 @@ func 死ね():
 		emit_signal("died");
 		disableInput();
 		sprite.visible = false;
-		cshape.disabled = true;
+		#cshape.disabled = true;
+		cshape.set_deferred("disabled", true);
 		$Status/DeathCrunch.play();
 		$Status/Deathicles.emitting = true;
 

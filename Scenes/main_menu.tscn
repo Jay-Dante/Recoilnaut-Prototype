@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://rg6geehig6om"]
+[gd_scene load_steps=13 format=3 uid="uid://rg6geehig6om"]
 
 [ext_resource type="FontFile" uid="uid://dynf0qxshk31i" path="res://Assets/Type/VCR_OSD_MONO_1.001.ttf" id="1_5d01w"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_i2ina"]
 [ext_resource type="Texture2D" uid="uid://cuu5n4ldakfap" path="res://Assets/Art/Instructions.png" id="3_ok2tc"]
+[ext_resource type="Texture2D" uid="uid://b7fonqwejw52t" path="res://Assets/Art/Planets/Sheet_Planets.png" id="4_uw4ux"]
+[ext_resource type="Texture2D" uid="uid://c3k6pi1lfircd" path="res://Assets/Art/Debris/Sheet_Debris.png" id="5_ceq3l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vnouq"]
 font = ExtResource("1_5d01w")
@@ -27,6 +29,48 @@ initial_velocity_max = 10.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 color = Color(0.752941, 0.913725, 0.0627451, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3y8mx"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpu4u"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 200, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jm7ae"]
+particles_animation = true
+particles_anim_h_frames = 17
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imauj"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 200, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 200.0
+angular_velocity_min = -60.0
+angular_velocity_max = 60.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+anim_speed_max = 1.0
+anim_offset_max = 1.0
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -185,6 +229,7 @@ theme_override_font_sizes/font_size = 14
 text = "MOUSE TO AIM"
 
 [node name="Aim" type="Label" parent="ControlsButton/Instructions/Aim"]
+layout_mode = 0
 offset_left = -0.0533447
 offset_top = 60.4439
 offset_right = 105.947
@@ -241,6 +286,7 @@ theme_override_font_sizes/font_size = 30
 text = "Quit"
 
 [node name="Version" type="Label" parent="."]
+layout_mode = 0
 offset_left = 998.0
 offset_top = 775.0
 offset_right = 1270.0
@@ -248,13 +294,37 @@ offset_bottom = 798.0
 text = "Recoilnaut Prototype ver. 0.1"
 label_settings = SubResource("LabelSettings_7tdju")
 
-[node name="Field0" type="GPUParticles2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Field0" type="GPUParticles2D" parent="Background"]
 z_index = -100
 position = Vector2(1320, 400)
 amount = 1000
 process_material = SubResource("ParticleProcessMaterial_pyi5p")
 lifetime = 140.0
 preprocess = 280.0
+
+[node name="P1" type="GPUParticles2D" parent="Background"]
+z_index = -50
+material = SubResource("CanvasItemMaterial_3y8mx")
+position = Vector2(1432, 392)
+scale = Vector2(2, 2)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_wpu4u")
+texture = ExtResource("4_uw4ux")
+lifetime = 600.0
+preprocess = 20.0
+
+[node name="P2" type="GPUParticles2D" parent="Background"]
+z_index = -50
+material = SubResource("CanvasItemMaterial_jm7ae")
+position = Vector2(1432, 392)
+scale = Vector2(2, 2)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_imauj")
+texture = ExtResource("5_ceq3l")
+lifetime = 600.0
+preprocess = 20.0
 
 [connection signal="pressed" from="StoryModeButton" to="." method="_on_story_mode_button_pressed"]
 [connection signal="pressed" from="EndlessModeButton" to="." method="_on_endless_mode_button_pressed"]
