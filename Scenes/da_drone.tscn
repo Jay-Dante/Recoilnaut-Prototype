@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://01wxt76kg064"]
+
+[ext_resource type="AudioStream" uid="uid://ds18lgwig1ios" path="res://Assets/Music/HeresyoDronedoo.wav" id="1_csapc"]
+
+[node name="DaDrone" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_csapc")
+volume_db = -15.0

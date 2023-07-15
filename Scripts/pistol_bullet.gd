@@ -25,7 +25,8 @@ func _on_area_entered(area):
 	if area is Debris:
 			var debris = area;
 			$Bullet_Rico.play();
+			$Ricocles.emitting = true;
 			cshape.set_deferred("disabled", true);
 			sprite.set_deferred("visible", false);
-			await get_tree().create_timer(1).timeout;
+			await get_tree().create_timer(2).timeout;
 			queue_free();

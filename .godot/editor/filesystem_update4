@@ -13,3 +13,7 @@ res://Resources/asteroid_collision_large.tres
 res://Scripts/game.gd
 res://Scripts/recoilnaut.gd
 res://Scripts/pistol_bullet.gd
+res://Scenes/main_menu.gd
+res://Scenes/GoofyAh.tscn
+res://Scenes/spawn_timer.tscn
+res://Scenes/spawn_timer.gd

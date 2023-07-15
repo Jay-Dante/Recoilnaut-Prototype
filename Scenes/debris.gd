@@ -14,8 +14,7 @@ var speed = 0;
 
 var smallSpriteTextures = [
 	"res://Assets/Art/Debris/Small/Debris7.png",
-	"res://Assets/Art/Debris/Small/Debris14.png",
-	"res://Assets/Art/Debris/Small/Debris17.png"
+	"res://Assets/Art/Debris/Small/Debris14.png"
 	]
 
 var mediumSpriteTextures = [
@@ -25,7 +24,8 @@ var mediumSpriteTextures = [
 	"res://Assets/Art/Debris/Small/Debris16.png",
 	"res://Assets/Art/Debris/Small/Debris13.png",
 	"res://Assets/Art/Debris/Small/Debris15.png",
-	"res://Assets/Art/Debris/Medium/Debris10.png"
+	"res://Assets/Art/Debris/Medium/Debris10.png",
+	"res://Assets/Art/Debris/Small/Debris17.png"
 ]
 
 var largeSpriteTextures = [

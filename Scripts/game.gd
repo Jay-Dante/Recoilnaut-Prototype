@@ -6,6 +6,7 @@ extends Node2D
 @onready var hud = $UI/HUD;
 @onready var game_over = $UI/GameOverScreen;
 @onready var player_spawn = $PlayerSpawn;
+@onready var timer_node = $Recoilnaut/Timer;
 
 var asteroid_scene = preload("res://Scenes/asteroid.tscn");
 
@@ -21,8 +22,10 @@ func _ready():
 	game_over.visible = false;
 	score = 0;
 	health = 1;
+	
 	player.connect("pb_shot", _on_player_pb_shot);
 	player.connect("died", _on_player_died);
+	timer_node.connect("object_instantiated", _on_object_instantiated);
 	
 	for Asteroid in asteroids.get_children():
 		Asteroid.connect("destroyed", _on_asteroid_destroyed);
@@ -67,7 +70,7 @@ func _on_asteroid_destroyed(pos, size, points):
 # determine what is spawned from destroying an asteroid: More asteroids or items
 # TODO: Implement Ammo & Health Drops
 func asteroid_drop(pos, size):
-	print("Asteroid_Drop Called")
+	print("Asteroid_Drop Called");
 	var a = asteroid_scene.instantiate();
 	a.global_position = pos;
 	a.size = size;
@@ -75,3 +78,13 @@ func asteroid_drop(pos, size):
 	# asteroids.add_child(a);
 	asteroids.call_deferred("add_child", a);
 
+func _on_object_instantiated(obj):
+	var bodySizes = [
+		Asteroid.BodySize.SMALL,
+		Asteroid.BodySize.MEDIUM,
+		Asteroid.BodySize.LARGE,
+	]
+	var randomSize = bodySizes[randi() % bodySizes.size()];
+	print(randomSize);
+	asteroid_drop(global_position, randomSize);
+	print("Child Asteroid Spawned");

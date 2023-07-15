@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvfjdbhov71c0"]
+[gd_scene load_steps=11 format=3 uid="uid://bvfjdbhov71c0"]
 
 [ext_resource type="PackedScene" uid="uid://ce5hcqoq1v8d" path="res://Scenes/recoilnaut.tscn" id="1_6v4gp"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_jdrf8"]
 [ext_resource type="PackedScene" uid="uid://dky3hkhshbj4v" path="res://Scenes/hud.tscn" id="2_cd1rt"]
-[ext_resource type="PackedScene" uid="uid://cudgdf6e38n7y" path="res://Scenes/asteroid.tscn" id="3_a5edd"]
 [ext_resource type="PackedScene" uid="uid://bbeu6ls63kc50" path="res://Scenes/game_over_screen.tscn" id="4_22l8h"]
 [ext_resource type="PackedScene" uid="uid://dktd4wxi75vim" path="res://Scenes/health.tscn" id="4_xsfd6"]
 [ext_resource type="Script" path="res://Scenes/StarfieldParallax.gd" id="7_hbmsb"]
 [ext_resource type="PackedScene" uid="uid://c0psba0a4hq2i" path="res://Scenes/debris.tscn" id="8_nqflh"]
+[ext_resource type="PackedScene" uid="uid://b4u2d0gcgg8no" path="res://Scenes/GoofyAh.tscn" id="9_vv3qt"]
+[ext_resource type="PackedScene" uid="uid://dehl5f4ildtms" path="res://Scenes/spawn_timer.tscn" id="10_f61fe"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1pqoh"]
 emission_shape = 3
@@ -51,49 +52,31 @@ lifetime = 200.0
 preprocess = 280.0
 speed_scale = 64.0
 
+[node name="AudioStreamPlayer2D" parent="Recoilnaut" instance=ExtResource("9_vv3qt")]
+volume_db = -20.0
+
+[node name="Timer" parent="Recoilnaut" instance=ExtResource("10_f61fe")]
+autostart = true
+
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Debris" type="Node" parent="."]
 
 [node name="Asteroids" type="Node" parent="Debris"]
 
-[node name="Asteroid" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(308, -81)
+[node name="Wreckage" type="Node" parent="Debris"]
 
-[node name="Asteroid2" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(-182, 223)
-
-[node name="Asteroid3" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(-94, 580)
-
-[node name="Asteroid4" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(149, 977)
-
-[node name="Asteroid5" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(541, 982)
-
-[node name="Asteroid6" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(900, 946)
-
-[node name="Asteroid7" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(1278, 934)
-
-[node name="Asteroid8" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(1399, 572)
-
-[node name="Asteroid9" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(1378, 244)
-
-[node name="Asteroid10" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(1114, -89)
-
-[node name="Asteroid11" parent="Debris/Asteroids" instance=ExtResource("3_a5edd")]
-position = Vector2(743, -103)
-
-[node name="debris" parent="Debris/Asteroids" instance=ExtResource("8_nqflh")]
+[node name="debris" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
 position = Vector2(328, 376)
 
-[node name="Wreckage" type="Node" parent="Debris"]
+[node name="debris2" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(1216, 704)
+
+[node name="debris3" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(62, 730)
+
+[node name="debris4" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(1197, 106)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(640, 400)

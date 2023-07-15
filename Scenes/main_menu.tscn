@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://rg6geehig6om"]
+[gd_scene load_steps=14 format=3 uid="uid://rg6geehig6om"]
 
 [ext_resource type="FontFile" uid="uid://dynf0qxshk31i" path="res://Assets/Type/VCR_OSD_MONO_1.001.ttf" id="1_5d01w"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_i2ina"]
 [ext_resource type="Texture2D" uid="uid://cuu5n4ldakfap" path="res://Assets/Art/Instructions.png" id="3_ok2tc"]
 [ext_resource type="Texture2D" uid="uid://b7fonqwejw52t" path="res://Assets/Art/Planets/Sheet_Planets.png" id="4_uw4ux"]
 [ext_resource type="Texture2D" uid="uid://c3k6pi1lfircd" path="res://Assets/Art/Debris/Sheet_Debris.png" id="5_ceq3l"]
+[ext_resource type="PackedScene" uid="uid://01wxt76kg064" path="res://Scenes/da_drone.tscn" id="6_hib1w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vnouq"]
 font = ExtResource("1_5d01w")
@@ -123,7 +124,12 @@ offset_bottom = 419.0
 theme_override_colors/default_color = Color(0.752941, 0.913725, 0.0627451, 1)
 text = "This game is still a work in progress. In fact, I just might trash everything and start over at any moment. Perhaps even while you're playing. Oh what a volatile world.
 
-Anyway, thanks for trying the game! 
+Anyway, thanks for trying the game! This was submitted for GDA's 2023 \"Four Colors\" Summer Game Jam.
+
+
+
+
+
 
 Still here eh? Wanna know where I got the idea from? Let's just say I was watching a particularly well known, well received, space western anime. 
 
@@ -219,26 +225,37 @@ scale = Vector2(3.22266, 3.23828)
 texture = ExtResource("3_ok2tc")
 
 [node name="Aim" type="Label" parent="ControlsButton/Instructions"]
-offset_left = -48.897
-offset_top = -41.5296
-offset_right = 57.103
-offset_bottom = -15.5296
+offset_left = -49.0
+offset_top = -62.9988
+offset_right = 57.0
+offset_bottom = -44.9988
 theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
 theme_override_fonts/font = ExtResource("1_5d01w")
 theme_override_font_sizes/font_size = 14
 text = "MOUSE TO AIM"
 
-[node name="Aim" type="Label" parent="ControlsButton/Instructions/Aim"]
+[node name="CTS" type="Label" parent="ControlsButton/Instructions/Aim"]
 layout_mode = 0
-offset_left = -0.0533447
-offset_top = 60.4439
-offset_right = 105.947
-offset_bottom = 86.4439
+offset_left = -8.43152
+offset_top = 3.62356
+offset_right = 106.568
+offset_bottom = 35.6236
 theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
 theme_override_fonts/font = ExtResource("1_5d01w")
 theme_override_font_sizes/font_size = 14
-text = "CLICK 
-TO SHOOT"
+text = "
+CLICK TO SHOOT"
+
+[node name="CTS2" type="Label" parent="ControlsButton/Instructions/Aim"]
+layout_mode = 0
+offset_left = -8.43152
+offset_top = 96.2653
+offset_right = 106.568
+offset_bottom = 128.265
+theme_override_colors/font_color = Color(0.752941, 0.913725, 0.0627451, 1)
+theme_override_fonts/font = ExtResource("1_5d01w")
+theme_override_font_sizes/font_size = 14
+text = "'R' TO RESTART"
 
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 1
@@ -265,7 +282,7 @@ offset_top = -353.0
 offset_right = 406.0
 offset_bottom = -291.0
 theme_override_colors/font_color = Color(0.188235, 0.384314, 0.188235, 1)
-text = "@Jay_Dante: Programming, Art, Design
+text = "@Jay_Dante: Programming, Art, Sound, Design
 @T.K.: Music, Sound, Design"
 
 [node name="QuitButton" type="Button" parent="."]
@@ -325,6 +342,9 @@ process_material = SubResource("ParticleProcessMaterial_imauj")
 texture = ExtResource("5_ceq3l")
 lifetime = 600.0
 preprocess = 20.0
+
+[node name="DaDrone" parent="." instance=ExtResource("6_hib1w")]
+autoplay = true
 
 [connection signal="pressed" from="StoryModeButton" to="." method="_on_story_mode_button_pressed"]
 [connection signal="pressed" from="EndlessModeButton" to="." method="_on_endless_mode_button_pressed"]

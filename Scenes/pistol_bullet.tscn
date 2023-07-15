@@ -17,6 +17,7 @@ script = ExtResource("1_l5gwf")
 texture = ExtResource("1_xbqgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_46bfd")
@@ -38,6 +39,22 @@ color = Color(0.752941, 0.913725, 0.0627451, 1)
 
 [node name="Bullet_Rico" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_7g6u0")
+
+[node name="Ricocles" type="CPUParticles2D" parent="."]
+z_index = 100
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.466667, 0.643137, 0.466667, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

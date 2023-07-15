@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4u2d0gcgg8no"]
+
+[ext_resource type="AudioStream" uid="uid://dbuedfim0qyra" path="res://Assets/Music/GoofyAhSong.wav" id="1_r0kme"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
+stream = ExtResource("1_r0kme")
+volume_db = -50.0
+autoplay = true

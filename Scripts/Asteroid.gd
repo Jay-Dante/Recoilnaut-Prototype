@@ -25,11 +25,11 @@ var points: int:
 	get:
 		match size:
 			BodySize.SMALL:
-				return 100;
+				return 200;
 			BodySize.MEDIUM:
-				return 50;
+				return 100;
 			BodySize.LARGE:
-				return 25;
+				return 50;
 			_:
 				return 0;
 
