@@ -36,7 +36,6 @@ var points: int:
 func _ready():
 	rotation = randf_range(0,2*PI);
 	#rotation_degrees += randf_range(-2*PI, 2*PI);
-	
 	# asteroid variability
 	match size:
 		BodySize.SMALL:
@@ -57,8 +56,10 @@ func _ready():
 			#cshape.shape = preload("res://Resources/asteroid_collision_large.tres");
 			cshape.set_deferred("shape",preload("res://Resources/asteroid_collision_large.tres"));
 			sprite.scale = Vector2(1,1);
-	# print(rotation_degrees);
-	# print(speed);
+			
+	await get_tree().create_timer(30).timeout;
+	print("DELETED");
+	queue_free();
 	
 func _physics_process(delta):
 	global_position += move_vec.rotated(rotation) * speed * delta;

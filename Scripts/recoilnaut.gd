@@ -27,6 +27,9 @@ func _process(delta):
 		var mouse_position := get_global_mouse_position();
 		var direction := mouse_position - global_position;
 		rotation = direction.angle() - deg_to_rad(-90);
+		
+		if Input.is_action_just_pressed("escape"):
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn");
 	
 func _physics_process(delta):
 	

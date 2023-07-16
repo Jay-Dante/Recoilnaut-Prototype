@@ -36,14 +36,14 @@ visible = false
 [node name="Recoilnaut" parent="." instance=ExtResource("1_6v4gp")]
 position = Vector2(640, 360)
 
-[node name="Camera2D2" type="Camera2D" parent="Recoilnaut"]
+[node name="Camera2D" type="Camera2D" parent="Recoilnaut"]
 position_smoothing_enabled = true
 
-[node name="StarfieldParallax" type="Node2D" parent="Recoilnaut/Camera2D2"]
+[node name="StarfieldParallax" type="Node2D" parent="Recoilnaut/Camera2D"]
 position = Vector2(-640, -360)
 script = ExtResource("7_hbmsb")
 
-[node name="Field0" type="GPUParticles2D" parent="Recoilnaut/Camera2D2/StarfieldParallax"]
+[node name="Field0" type="GPUParticles2D" parent="Recoilnaut/Camera2D/StarfieldParallax"]
 z_index = -100
 position = Vector2(640, 400)
 amount = 1000
@@ -56,6 +56,7 @@ speed_scale = 64.0
 volume_db = -20.0
 
 [node name="Timer" parent="Recoilnaut" instance=ExtResource("10_f61fe")]
+wait_time = 0.1
 autostart = true
 
 [node name="Bullets" type="Node" parent="."]
@@ -77,6 +78,87 @@ position = Vector2(62, 730)
 
 [node name="debris4" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
 position = Vector2(1197, 106)
+
+[node name="debris5" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(1703, 391)
+
+[node name="debris6" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(2017, 1143)
+
+[node name="debris7" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(716, 1290)
+
+[node name="debris8" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-444, 1183)
+
+[node name="debris9" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-659, 459)
+
+[node name="debris10" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-489, -169)
+
+[node name="debris11" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(586, -554)
+
+[node name="debris12" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(1678, -650)
+
+[node name="debris13" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(2838, -452)
+
+[node name="debris14" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(4056, 832)
+
+[node name="debris15" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(1678, 2583)
+
+[node name="debris16" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-2308, 1717)
+
+[node name="debris17" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-2660, -1280)
+
+[node name="debris18" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-348, -2060)
+
+[node name="debris19" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(2628, -3052)
+
+[node name="debris20" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(6260, 1156)
+
+[node name="debris21" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(5220, 4340)
+
+[node name="debris22" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(756, 4676)
+
+[node name="debris23" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-3516, 4052)
+
+[node name="debris24" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-5751, 903)
+
+[node name="debris25" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-3795, -4786)
+
+[node name="debris26" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(1121, -6922)
+
+[node name="debris27" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(11122, -4210)
+
+[node name="debris28" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(12580, 4028)
+
+[node name="debris29" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(4715, 9215)
+
+[node name="debris30" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-5558, 9181)
+
+[node name="debris31" parent="Debris/Wreckage" instance=ExtResource("8_nqflh")]
+position = Vector2(-11152, 3824)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(640, 400)

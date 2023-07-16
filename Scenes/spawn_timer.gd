@@ -10,7 +10,6 @@ var location = Vector2();
 func instance_objects():
 	var obj1 = null;
 	emit_signal("object_instantiated", obj1);
-	print("object signal emitted");
 
 func _on_timeout():
 	randomize();

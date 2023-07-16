@@ -7,8 +7,14 @@ extends Node2D
 @onready var game_over = $UI/GameOverScreen;
 @onready var player_spawn = $PlayerSpawn;
 @onready var timer_node = $Recoilnaut/Timer;
+@onready var play_cam = $Recoilnaut/Camera2D;
+
+var screenWidth = 1280;
+var screenHeight = 800;
 
 var asteroid_scene = preload("res://Scenes/asteroid.tscn");
+var asteroid_ctr = 0;
+var spawnZoneScale = 2.0;
 
 var score := 0:
 	set(value):
@@ -78,13 +84,35 @@ func asteroid_drop(pos, size):
 	# asteroids.add_child(a);
 	asteroids.call_deferred("add_child", a);
 
+# this is the asteroid spawning system
 func _on_object_instantiated(obj):
+	var camPosition = play_cam.global_position;
+	var isInCameraView = true;
+	
 	var bodySizes = [
 		Asteroid.BodySize.SMALL,
 		Asteroid.BodySize.MEDIUM,
 		Asteroid.BodySize.LARGE,
 	]
 	var randomSize = bodySizes[randi() % bodySizes.size()];
-	print(randomSize);
-	asteroid_drop(global_position, randomSize);
-	print("Child Asteroid Spawned");
+	
+	var spawnZoneMin = camPosition - Vector2(screenWidth, screenHeight) * spawnZoneScale;
+	var spawnZoneMax = camPosition + Vector2(screenWidth, screenHeight) * spawnZoneScale;
+	
+	while isInCameraView:
+		var randomX = randi_range(spawnZoneMin.x, spawnZoneMax.x);
+		var randomY = randi_range(spawnZoneMin.y, spawnZoneMax.y);
+		
+		var spawn_pos = Vector2(randomX, randomY);
+		
+		# create safe zone so the player doesn't get screwed
+		isInCameraView = (
+			spawn_pos.x >= camPosition.x - screenWidth / 2 &&
+			spawn_pos.x <= camPosition.x + screenWidth / 2 &&
+			spawn_pos.y >= camPosition.y - screenHeight / 2 &&
+			spawn_pos.y <= camPosition.y + screenHeight / 2
+		)
+		
+		asteroid_drop(spawn_pos, randomSize);
+		
+		print("ASTEROID SPAWNED: ", asteroid_ctr);
