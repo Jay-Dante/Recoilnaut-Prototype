@@ -47,9 +47,9 @@ vertical_alignment = 1
 
 [node name="You Died" type="Label" parent="GameOver"]
 layout_mode = 0
-offset_left = 129.0
+offset_left = 135.0
 offset_top = 69.0
-offset_right = 242.0
+offset_right = 248.0
 offset_bottom = 92.0
 text = "- YOU DIED -"
 label_settings = SubResource("LabelSettings_g4et8")

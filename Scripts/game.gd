@@ -8,6 +8,8 @@ extends Node2D
 @onready var player_spawn = $PlayerSpawn;
 @onready var timer_node = $Recoilnaut/Timer;
 @onready var play_cam = $Recoilnaut/Camera2D;
+@onready var area2d = $Recoilnaut/Camera2D/Area2D;
+@onready var collision_shape = $Recoilnaut/Camera2D/Area2D/CollisionShape2D;
 
 var screenWidth = 1280;
 var screenHeight = 800;
@@ -96,8 +98,10 @@ func _on_object_instantiated(obj):
 	]
 	var randomSize = bodySizes[randi() % bodySizes.size()];
 	
-	var spawnZoneMin = camPosition - Vector2(screenWidth, screenHeight) * spawnZoneScale;
-	var spawnZoneMax = camPosition + Vector2(screenWidth, screenHeight) * spawnZoneScale;
+	var safeZoneScale = 1.5;
+	
+	var spawnZoneMin = camPosition - Vector2(screenWidth, screenHeight) * (spawnZoneScale + safeZoneScale);
+	var spawnZoneMax = camPosition + Vector2(screenWidth, screenHeight) * (spawnZoneScale + safeZoneScale);
 	
 	while isInCameraView:
 		var randomX = randi_range(spawnZoneMin.x, spawnZoneMax.x);
@@ -106,13 +110,24 @@ func _on_object_instantiated(obj):
 		var spawn_pos = Vector2(randomX, randomY);
 		
 		# create safe zone so the player doesn't get screwed
-		isInCameraView = (
-			spawn_pos.x >= camPosition.x - screenWidth / 2 &&
-			spawn_pos.x <= camPosition.x + screenWidth / 2 &&
-			spawn_pos.y >= camPosition.y - screenHeight / 2 &&
-			spawn_pos.y <= camPosition.y + screenHeight / 2
-		)
-		
-		asteroid_drop(spawn_pos, randomSize);
+		if not area2d_collision_check(spawn_pos):
+			asteroid_drop(spawn_pos, randomSize);
+			print("ASTEROID SPAWNED: ", asteroid_ctr)
+			isInCameraView = false;
 		
 		print("ASTEROID SPAWNED: ", asteroid_ctr);
+
+func area2d_collision_check(position):
+	var areas = $Recoilnaut/Camera2D/Area2D.get_overlapping_areas()
+
+	for area in areas:
+		if area != $Recoilnaut/Camera2D/Area2D:
+			var colliderShape = area.get_node("CollisionShape2D").shape;
+			var colliderTransform = area.global_transform;
+
+			var localPosition = colliderTransform.affine_inverse().xform(position);
+
+			if colliderShape.collide(localPosition):
+				return true;
+
+	return false;
